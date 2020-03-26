@@ -1,0 +1,6 @@
+-----
+client connect to web socket: wscat -c ws://localhost:3001
+
+-----
+babel:
+babel app/scripts/src/app.js -o app/scripts/dist/main.js
