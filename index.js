@@ -1,25 +1,27 @@
-var errorHandler = require("./errorHandler");
-var extract = require("./extract");
-var fs = require("fs");
-var http = require("http");
-var mime = require("mime");
-var wss = require("./websockets-server");
+const errorHandler = require("./errorHandler");
+const extract = require("./extract");
+const fs = require("fs");
+const http = require("http");
+const mime = require("mime");
+const wss = require("./websockets-server");
 
-var server = http.createServer(function (req, res) {
-    console.log("Responding to a request");
+const server = http.createServer((req, res) => {
+  console.log("Responding to a request");
 
-    var filePath = extract(req.url);
-    var mimeType = mime.getType(req.url) || "text/html";
-    console.log('The req.url is: ' + req.url);
-    console.log('The mimeType is: ' + mimeType);
-    fs.readFile(filePath, function (err, data) {
-        if (err) {
-            errorHandler(err, res, "app");
-            return;
-        } else {
-            res.setHeader("Content-Type", mimeType);
-            res.end(data);
-        }
+  const filePath = extract(req.url);
+  const mimeType = mime.getType(req.url) || "text/html";
+  
+  console.log('The req.url is: ' + req.url);
+  console.log('The mimeType is: ' + mimeType);
+  
+  fs.readFile(filePath, (err, data) => {
+    if (err) {
+      errorHandler(err, res, "app");
+        return;
+      } else {
+        res.setHeader("Content-Type", mimeType);
+        res.end(data);
+      }
     });
 });
 

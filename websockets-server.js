@@ -1,30 +1,30 @@
-var WebSocket = require("ws");
-var WebSocketServer = WebSocket.Server;
-var port = 3001;
-var ws = new WebSocketServer({
-    port: port
-});
+const WebSocket = require("ws");
+const WebSocketServer = WebSocket.Server;
+const port = 3001;
+const ws = new WebSocketServer({ port });
 
-var messages = [];
+let messages = [];
 
 console.log("websocket server started");
 
-ws.on("connection", function (socket, req) {
-    console.log("client connection established with IP: " + req.connection.remoteAddress);
+ws.on("connection", (socket, req) => {
+  console.log("client connection established with IP: " + req.connection.remoteAddress);
 
-    messages.forEach(function (msg) {
-        socket.send(msg);
-    });
+  messages.forEach(msg => {
+    socket.send(msg);
+  });
 
-    socket.on("message", function (data) {
-        console.log("New message received: " + data);
-        messages.push(data);
-        ws.clients.forEach(function (clientSocket) {
-            clientSocket.send(data);
-        });
+  socket.on("message", data => {
+    console.log("New message received: " + data);
+    
+    messages.push(data);
+    
+    ws.clients.forEach(clientSocket => {
+      clientSocket.send(data);
     });
+  });
 
-    socket.on('close', function close() {
-        console.log("client connection disconnected with IP: " + req.connection.remoteAddress);
-    });
+  socket.on('close', function close() {
+    console.log("client connection disconnected with IP: " + req.connection.remoteAddress);
+  });
 });
