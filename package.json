@@ -7,8 +7,8 @@
     "url": "git://github.com/paratagas/node-websockets-chat.git"
   },
   "engines": {
-    "npm": ">=5",
-    "node": ">=8.10.0"
+    "npm": ">=6.13.4",
+    "node": ">=12.16.1"
   },
   "author": {
     "name": "Evgeni Sviridenko",
@@ -16,6 +16,15 @@
     "url": "https://github.com/paratagas"
   },
   "license": "MIT",
+  "tags": [
+    "javascript",
+    "chat",
+    "es6",
+    "node.js",
+    "websockets",
+    "jsdoc",
+    "linting"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
@@ -23,7 +32,10 @@
     "bot_dev": "nodemon websockets-chat-bot.js",
     "bot": "node websockets-chat-bot.js",
     "build": "browserify -d app/scripts/src/main.js -o app/scripts/dist/main.js",
-    "watch": "watchify -v -d app/scripts/src/main.js -o app/scripts/dist/main.js"
+    "watch": "watchify -v -d app/scripts/src/main.js -o app/scripts/dist/main.js",
+    "jsdoc": "jsdoc ./scripts/src --destination ./docs",
+    "lint": "eslint ./scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage",
+    "lint:fix": "eslint --fix ./scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage"
   },
   "browserify": {
     "transform": [
@@ -40,11 +52,14 @@
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
+    "babel-eslint": "^10.0.0",
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^8.0.0",
     "browserify": "^14.5.0",
     "crypto-js": "^3.1.9-1",
+    "eslint": "^6.1.0",
     "jquery": "^3.2.1",
+    "jsdoc": "^3.6.3",
     "moment": "^2.19.2",
     "nodemon": "^1.12.1",
     "watchify": "^3.9.0"
