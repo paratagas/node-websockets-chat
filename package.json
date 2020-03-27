@@ -33,9 +33,9 @@
     "bot": "node websockets-chat-bot.js",
     "build": "browserify -d app/scripts/src/main.js -o app/scripts/dist/main.js",
     "watch": "watchify -v -d app/scripts/src/main.js -o app/scripts/dist/main.js",
-    "jsdoc": "jsdoc ./scripts/src --destination ./docs",
-    "lint": "eslint ./scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage",
-    "lint:fix": "eslint --fix ./scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage"
+    "jsdoc": "jsdoc ./app/scripts/src --destination ./docs",
+    "lint": "eslint ./app/scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage",
+    "lint:fix": "eslint --fix ./app/scripts/src ./ --ignore-path .gitignore --ignore-pattern coverage"
   },
   "browserify": {
     "transform": [
