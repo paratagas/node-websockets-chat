@@ -7,10 +7,14 @@ chatClient.on('open', () => {
 });
 
 chatClient.on('message', data => {
-  console.log(`bot received message: ${data}`);
+  console.log(`bot received message: ${ data }`);
 
-  // is someone contacts "Bot" it answers
+  // If someone contacts "Bot" it answers
   if (data.includes(botName)) {
     chatClient.send('bot answered');
   }
+});
+
+chatClient.on('close', data => {
+  console.log('bot left the chat');
 });

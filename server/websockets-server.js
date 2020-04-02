@@ -8,14 +8,14 @@ let messages = [];
 console.log('websocket server started');
 
 ws.on('connection', (socket, req) => {
-  console.log(`client connection established with IP: ${req.connection.remoteAddress}`);
+  console.log(`Client connection established with IP: ${req.connection.remoteAddress}`);
 
   messages.forEach(msg => {
     socket.send(msg);
   });
 
   socket.on('message', data => {
-    console.log(`New message received: ${data}`);
+    console.log(`New message received: ${ data }`);
     
     messages.push(data);
     
@@ -24,7 +24,7 @@ ws.on('connection', (socket, req) => {
     });
   });
 
-  socket.on('close', function close() {
-    console.log(`client connection disconnected with IP: ${req.connection.remoteAddress}`);
+  socket.on('close', () => {
+    console.log(`Client disconnected with IP: ${ req.connection.remoteAddress }`);
   });
 });

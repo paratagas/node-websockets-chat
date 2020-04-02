@@ -29,13 +29,13 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node index.js",
     "dev": "nodemon index.js",
-    "bot_dev": "nodemon websockets-chat-bot.js",
-    "bot": "node websockets-chat-bot.js",
+    "bot": "node ./server/websockets-chat-bot.js",
+    "bot:dev": "nodemon ./server/websockets-chat-bot.js",
     "build": "browserify -d app/scripts/src/main.js -o app/scripts/dist/main.js",
     "watch": "watchify -v -d app/scripts/src/main.js -o app/scripts/dist/main.js",
-    "jsdoc": "jsdoc ./app/scripts/src --destination ./docs",
-    "lint": "eslint ./app/scripts/src --ignore-path .gitignore",
-    "lint:fix": "eslint --fix ./app/scripts/src --ignore-path .gitignore"
+    "jsdoc": "jsdoc ./app/scripts/src ./server/ index.js --destination ./docs",
+    "lint": "eslint ./app/scripts/src ./server/ index.js --ignore-path .gitignore",
+    "lint:fix": "eslint --fix ./app/scripts/src ./server/ --ignore-path .gitignore"
   },
   "browserify": {
     "transform": [
