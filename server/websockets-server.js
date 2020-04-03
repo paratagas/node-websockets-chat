@@ -8,7 +8,7 @@ let messages = [];
 console.log('websocket server started');
 
 ws.on('connection', (socket, req) => {
-  console.log(`Client connection established with IP: ${req.connection.remoteAddress}`);
+  console.log(`Client connection established with IP: ${ req.connection.remoteAddress }`);
 
   messages.forEach(msg => {
     socket.send(msg);
